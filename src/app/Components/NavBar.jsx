@@ -8,8 +8,8 @@ const NavBar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-b border-separator bg-background/70 backdrop-blur-lg">
-      <header className="flex h-16 items-center justify-between px-6">
+    <nav className="sticky top-0 z-40 w-full border-b-2 bg-background border-border  backdrop-blur-xl  ">
+      <header className="flex h-16 items-center justify-between px-8">
         <div className="flex items-center gap-4">
           <button
             className="md:hidden"
@@ -40,12 +40,14 @@ const NavBar = () => {
               )}
             </svg>
           </button>
-          <Link href="/"> SkillSphere</Link>
+          <Link href="/" className="text-3xl font-black">
+            Skill <span className="text-primary">Sphere</span>{" "}
+          </Link>
         </div>
-        <ul className="hidden items-center gap-4 md:flex">
+        <ul className="hidden  items-center gap-4 md:flex">
           <li>
             <Link
-              className={`text-sm font-medium ${pathname === "/" ? "text-emerald-500 font-bold" : "text-foreground/70"}`}
+              className={`text-sm font-bold ${pathname === "/" ? "text-primary font-bold" : "text-foreground/70"}`}
               href="/"
             >
               Home
@@ -53,7 +55,7 @@ const NavBar = () => {
           </li>
           <li>
             <Link
-              className={`text-sm font-medium ${pathname === "/courses" ? "text-emerald-500 font-bold" : "text-foreground/70"}`}
+              className={`text-sm font-bold ${pathname === "/courses" ? "text-primary font-bold" : "text-foreground/70"}`}
               href="courses"
             >
               Courses
@@ -61,7 +63,7 @@ const NavBar = () => {
           </li>
           <li>
             <Link
-              className={`text-sm font-medium ${pathname === "/myProfile" ? "text-emerald-500 font-bold" : "text-foreground/70"}`}
+              className={`text-sm font-bold ${pathname === "/myProfile" ? "text-primary font-bold" : "text-foreground/70"}`}
               href="myProfile"
             >
               My profile
@@ -69,19 +71,38 @@ const NavBar = () => {
           </li>
         </ul>
         {/* Profile and theme  */}
-        <div></div>
+        <div className="flex gap-2">
+          <h1 className="border" >T & P</h1>
+          <h1 className="border" >rar</h1>
+          <h1 className="border" >rar</h1>
+        </div>
       </header>
       {isMenuOpen && (
         <div className="border-t   md:hidden">
           <ul className="flex flex-col gap-2 p-4">
             <li>
-              <Link href="home">Home</Link>
+              <Link
+                className={`text-sm font-bold ${pathname === "/" ? "text-primary font-bold" : "text-foreground/70"}`}
+                href="/"
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <Link href="courses">Courses</Link>
+              <Link
+                className={`text-sm font-bold ${pathname === "/courses" ? "text-primary font-bold" : "text-foreground/70"}`}
+                href="courses"
+              >
+                Courses
+              </Link>
             </li>
             <li>
-              <Link href="myProfile">My profile</Link>
+              <Link
+                className={`text-sm font-bold ${pathname === "/myProfile" ? "text-primary font-bold" : "text-foreground/70"}`}
+                href="myProfile"
+              >
+                My profile
+              </Link>
             </li>
           </ul>
         </div>
