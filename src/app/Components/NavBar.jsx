@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Link } from "@heroui/react";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,10 +72,10 @@ const NavBar = () => {
           </li>
         </ul>
         {/* Profile and theme  */}
-        <div className="flex gap-2">
-          <h1 className="border" >T & P</h1>
-          <h1 className="border" >rar</h1>
-          <h1 className="border" >rar</h1>
+        <div className="flex items-center gap-2">
+          <span className="border border-border rounded-md px-2 py-1 text-sm text-foreground/70">rar</span>
+          <span className="border border-border rounded-md px-2 py-1 text-sm text-foreground/70">rar</span>
+          <ThemeToggle  />
         </div>
       </header>
       {isMenuOpen && (
