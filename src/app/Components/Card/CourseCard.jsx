@@ -1,0 +1,75 @@
+import { Button, Card, CardContent, CardFooter } from "@heroui/react";
+import { Star } from "lucide-react";
+import Image from "next/image";
+// import Link from "next/link";
+
+
+const CourseCard = ({ course }) => {
+
+const {
+  title,
+  image,
+  rating,
+  instructor,
+  duration,
+  level,
+  description,
+  category,
+} = course;
+
+  return (
+    <Card className="group overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all duration-500">
+      {/* IMAGE */}
+      <div className="relative aspect-video rounded-lg overflow-hidden">
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        />
+
+        <span className="absolute top-3 left-3 bg-primary text-primary-foreground text-xs px-3 py-1 rounded-full font-semibold">
+          {level}
+        </span>
+      </div>
+
+     
+      <CardContent className="p-5 space-y-3">
+        <div className="flex items-center justify-between">
+          <span className="text-xs uppercase tracking-wider text-muted-foreground">
+            {category}
+          </span>
+
+          <div className="flex items-center gap-1 text-yellow-500">
+            <Star size={16} fill="currentColor" />
+            <span className="text-sm font-medium text-foreground">
+              {rating}
+            </span>
+          </div>
+        </div>
+
+        <h3 className="text-xl font-bold line-clamp-2 group-hover:text-primary transition-colors">
+          {title}
+        </h3>
+
+        <p className="text-sm text-muted-foreground line-clamp-2">
+          {description}
+        </p>
+      </CardContent>
+
+     
+      <CardFooter className="px-5 pb-5 flex flex-col items-start gap-3">
+        <div className="flex items-center justify-between w-full text-sm">
+          <span className="font-medium">{instructor}</span>
+          <span className="text-muted-foreground">{duration}</span>
+        </div>
+
+        <Button className="w-full rounded-xl" color="primary">
+          View Details
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+};
+
+export default CourseCard;

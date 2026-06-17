@@ -1,4 +1,8 @@
+import CourseCard from "./Components/Card/CourseCard";
 import Hero from "./Components/Home/Hero/Hero";
+import TopCourses from "./Components/Home/TopCourses";
+import CoursesPage from "./courses/page";
+
 
 export default function Home() {
   return (
@@ -6,10 +10,12 @@ export default function Home() {
       {/* Hero is full-width — outside the constrained wrapper */}
       <Hero />
 
-      {/* Rest of page content */}
-      <main className="flex flex-1 w-full max-w-3xl mx-auto flex-col items-center py-20 px-6 sm:items-start">
-        <h1 className="text-5xl font-bold text-foreground">Welcome to Skill-Sphere</h1>
-      </main>
+      <div className="container mx-auto px-6">
+        <TopCourses />
+        
+      </div>
+
+      
     </div>
   );
 }
