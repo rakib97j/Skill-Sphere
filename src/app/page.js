@@ -2,6 +2,7 @@
 import Hero from "./Components/Home/Hero/Hero";
 import LearningTips from "./Components/Home/LearningTips";
 import TopCourses from "./Components/Home/TopCourses";
+import TopInstructor from "./Components/Home/TopInstructor";
 
 
 
@@ -14,6 +15,7 @@ export default function Home() {
       <div className="container mx-auto">
         <TopCourses />
         <LearningTips/>
+        <TopInstructor/>
         
         
       </div>
