@@ -24,7 +24,8 @@ const {
         <Image
           src={image}
           alt={title}
-          fill
+          width={400}
+          height={400}
           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
         />
 
@@ -62,7 +63,9 @@ const {
           <span className="text-muted-foreground">{duration}</span>
         </div>
 
-        <Button className="w-full rounded-xl bg-primary font-bold">View Details</Button>
+        <Button className="w-full rounded-xl bg-primary font-bold">
+          View Details
+        </Button>
       </CardFooter>
     </Card>
   );

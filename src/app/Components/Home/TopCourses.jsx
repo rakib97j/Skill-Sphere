@@ -17,12 +17,12 @@ const TopCourses =  async () => {
         <h1 className="text-6xl font-black text-center mb-5">
           Our Top Courses
         </h1>
-        <div className="p-7 bg-[#cfc4e82e] rounded-xl  ">
+        <div className="p-7 bg-primary/5 rounded-xl  ">
           {/* Card section */}
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 " >
-            {
-              CourseData.slice(0 ,3).map( course => <CourseCard key={course.id} course={course} ></CourseCard> )
-            }
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 ">
+            {CourseData.slice(0, 3).map((course) => (
+              <CourseCard key={course.id} course={course}></CourseCard>
+            ))}
           </div>
           <Link
             className="underline font-bold hover:text-[#7190f6] flex justify-center mt-4 "
