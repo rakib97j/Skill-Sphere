@@ -33,7 +33,6 @@ const {
         </span>
       </div>
 
-     
       <CardContent className="p-3 space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-xs uppercase tracking-wider text-muted-foreground">
@@ -57,16 +56,13 @@ const {
         </p>
       </CardContent>
 
-     
       <CardFooter className="px-5 pb-5 flex flex-col items-start gap-3">
         <div className="flex items-center justify-between w-full text-sm">
           <span className="font-medium">{instructor}</span>
           <span className="text-muted-foreground">{duration}</span>
         </div>
 
-        <Button className="w-full rounded-xl" color="primary">
-          View Details
-        </Button>
+        <Button className="w-full rounded-xl bg-primary font-bold">View Details</Button>
       </CardFooter>
     </Card>
   );

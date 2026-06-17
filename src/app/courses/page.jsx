@@ -3,6 +3,13 @@ import React from 'react';
 import CourseCard from '../Components/Card/CourseCard';
 import { getCourseData } from '@/DataActions/CourseData';
 
+
+export const metadata = {
+  title: "All-Courses",
+  description: "Browse top courses from industry experts",
+};
+
+
 const CoursesPage = async () => {
 
 

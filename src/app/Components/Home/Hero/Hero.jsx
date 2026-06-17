@@ -17,35 +17,48 @@ const slides = [
   {
     id: 1,
     image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80",
-    eyebrow: "Unlock Your Potential",
-    heading: "Learn Skills That\nActually Matter",
+      "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1600&q=80",
+    eyebrow: " DEVELOPMENT & TECH",
+    heading: "Code the Future with Industry Leaders",
     description:
-      "Join thousands of learners mastering real-world skills. Expert-led courses, hands-on projects, and a community that grows with you.",
-    cta: "Get Started",
+      "Dive into full-stack development, React, and Next.js. Master building highly scalable applications from scratch with guidance from top engineering experts.",
+    cta: "Start Learning Code",
+    link: "/courses",
   },
   {
     id: 2,
     image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=80",
-    eyebrow: "Expert-Led Curriculum",
-    heading: "Build the Future\nYou Deserve",
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&q=80",
+    eyebrow: " DATA SCIENCE & CYBER SECURITY",
+    heading: "Turn Data Into Power & Secure Systems",
     description:
-      "From beginner to pro — our adaptive learning paths are designed by industry experts to accelerate your career growth.",
-    cta: "Explore Courses",
+      "From cleaning complex datasets and training advanced neural networks to understanding modern network cryptography. Secure your spot in the high-demand tech ecosystem.",
+    cta: "Explore Tech Courses",
+    link: "/courses",
   },
   {
     id: 3,
     image:
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1600&q=80",
-    eyebrow: "Community Driven",
-    heading: "Collaborate, Create\n& Conquer",
+      "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=1600&q=80",
+    eyebrow: " UI/UX DESIGN & DIGITAL MARKETING",
+    heading: "Design Exceptional Experiences, Drive Massive Growth",
     description:
-      "Connect with a global network of learners and mentors. Share ideas, get feedback, and reach your goals faster — together.",
-    cta: "Join the Community",
+      "Learn user research, wire framing, and interactive prototypes in Figma. Pair those creative designs with data-driven SEO and digital marketing strategies to convert leads into loyal customers.",
+    cta: "Unleash Your Creativity",
+    link: "/courses",
+  },
+  {
+    id: 4,
+    image:
+      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=1600&q=80",
+    eyebrow: " BUSINESS, MANAGEMENT & CLOUD",
+    heading: "Lead Agile Teams & Architect Scalable Infrastructures",
+    description:
+      "Master the lifecycle of product management from initial vision to launch. Combine leadership strategies with reliable cloud architecture on AWS to handle production-ready workloads.",
+    cta: "Browse Advanced Tracks",
+    link: "/courses",
   },
 ];
-
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
@@ -69,29 +82,23 @@ export default function Hero() {
               style={{ backgroundImage: `url(${slide.image})` }}
             />
 
-           
-           
             <div className="slide-overlay" />
-  
+
             <div className="slide-content">
-           
               <span className="slide-eyebrow">{slide.eyebrow}</span>
 
-             
               <h1 className="slide-heading">{slide.heading}</h1>
 
-              
               <p className="slide-description">{slide.description}</p>
 
-           
               <div className="slide-cta">
-                <Link href="courses">
+                <Link href={slide.link}>
                   <Button
                     color="primary"
                     variant="shadow"
                     size="lg"
                     radius="full"
-                    className="hero-btn"
+                    className="hero-btn inline-block  bg-primary text-primary-foreground  rounded-full font-medium hover:bg-primary/40   transition"
                   >
                     {slide.cta}
                   </Button>
@@ -110,9 +117,6 @@ export default function Hero() {
         ))}
       </Swiper>
 
-   
-
-   
       <style>{`
         /* ---------- wrapper ---------- */
         .hero-section {
