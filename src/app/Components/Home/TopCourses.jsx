@@ -7,7 +7,7 @@ const TopCourses =  async () => {
 
   const CourseData = await getCourseData()
 
-  console.log(CourseData);
+  // console.log(CourseData);
 
 
 
@@ -19,7 +19,7 @@ const TopCourses =  async () => {
         </h1>
         <div className="p-7 bg-[#cfc4e82e] rounded-xl  ">
           {/* Card section */}
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 " >
             {
               CourseData.slice(0 ,3).map( course => <CourseCard key={course.id} course={course} ></CourseCard> )
             }

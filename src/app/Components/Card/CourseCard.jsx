@@ -34,7 +34,7 @@ const {
       </div>
 
      
-      <CardContent className="p-5 space-y-3">
+      <CardContent className="p-3 space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-xs uppercase tracking-wider text-muted-foreground">
             {category}
