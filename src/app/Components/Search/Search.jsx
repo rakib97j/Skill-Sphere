@@ -26,16 +26,17 @@ const Search = () => {
   };
 
   return (
-    <SearchField 
+    <SearchField
       name="search"
+      aria-label="Search Courses"
       defaultValue={searchParams.get("query")?.toString() || ""}
       onClear={handleClear}
     >
       <SearchField.Group>
         <SearchField.SearchIcon className="text-[#0485F7]" />
-        <SearchField.Input 
-          className="w-52 " 
-          placeholder="Search Courses..." 
+        <SearchField.Input
+          className="w-52 "
+          placeholder="Search Courses..."
           onChange={(e) => handleSearch(e.target.value)}
         />
         <SearchField.ClearButton onClick={handleClear} />

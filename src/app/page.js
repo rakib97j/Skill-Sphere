@@ -3,6 +3,7 @@ import Hero from "./Components/Home/Hero/Hero";
 import LearningTips from "./Components/Home/LearningTips";
 import TopCourses from "./Components/Home/TopCourses";
 import TopInstructor from "./Components/Home/TopInstructor";
+import Upcoming from "./Components/Home/Upcoming";
 
 
 
@@ -16,7 +17,7 @@ export default function Home() {
         <TopCourses />
         <LearningTips/>
         <TopInstructor/>
-        
+        <Upcoming/>        
         
       </div>
 

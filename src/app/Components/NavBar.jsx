@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
-import { Link } from "@heroui/react";
+import { Avatar, Link } from "@heroui/react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
+import { PersonStanding, UserRound } from "lucide-react";
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -73,9 +74,23 @@ const NavBar = () => {
         </ul>
         {/* Profile and theme  */}
         <div className="flex items-center gap-2">
-          <span className="border border-border rounded-md px-2 py-1 text-sm text-foreground/70">rar</span>
-          <span className="border border-border rounded-md px-2 py-1 text-sm text-foreground/70">rar</span>
-          <ThemeToggle  />
+          <div>
+            <Avatar size="sm">
+              <Avatar.Fallback>
+                <UserRound />
+              </Avatar.Fallback>
+            </Avatar>
+          </div>
+          {/* <div>
+            <Avatar size="sm">
+              <Avatar.Image
+                alt="Blue"
+                src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/blue.jpg"
+              />
+              <Avatar.Fallback>B</Avatar.Fallback>
+            </Avatar>
+          </div> */}
+          <ThemeToggle />
         </div>
       </header>
       {isMenuOpen && (
