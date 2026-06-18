@@ -57,7 +57,7 @@ const NavBar = () => {
           <li>
             <Link
               className={`text-sm font-bold ${pathname === "/courses" ? "text-primary font-bold" : "text-foreground/70"}`}
-              href="courses"
+              href="/courses"
             >
               Courses
             </Link>
@@ -65,7 +65,7 @@ const NavBar = () => {
           <li>
             <Link
               className={`text-sm font-bold ${pathname === "/myProfile" ? "text-primary font-bold" : "text-foreground/70"}`}
-              href="myProfile"
+              href="/myProfile"
             >
               My profile
             </Link>
@@ -92,7 +92,7 @@ const NavBar = () => {
             <li>
               <Link
                 className={`text-sm font-bold ${pathname === "/courses" ? "text-primary font-bold" : "text-foreground/70"}`}
-                href="courses"
+                href="/courses"
               >
                 Courses
               </Link>
@@ -100,7 +100,7 @@ const NavBar = () => {
             <li>
               <Link
                 className={`text-sm font-bold ${pathname === "/myProfile" ? "text-primary font-bold" : "text-foreground/70"}`}
-                href="myProfile"
+                href="/myProfile"
               >
                 My profile
               </Link>

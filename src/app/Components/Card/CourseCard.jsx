@@ -1,12 +1,14 @@
-import { Button, Card, CardContent, CardFooter } from "@heroui/react";
+import {  Button, Card, CardContent, CardFooter } from "@heroui/react";
 import { Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 // import Link from "next/link";
 
 
 const CourseCard = ({ course }) => {
 
 const {
+  id,
   title,
   image,
   rating,
@@ -64,7 +66,9 @@ const {
         </div>
 
         <Button className="w-full rounded-xl bg-primary font-bold">
-          View Details
+          <Link href={`/courses/${id}`} className="w-full">
+            View Details
+          </Link>
         </Button>
       </CardFooter>
     </Card>
