@@ -6,6 +6,10 @@ import { getCourseData } from "@/DataActions/CourseData";
 export const metadata = {
   title: "All-Courses",
   description: "Browse top courses from industry experts",
+
+  icons: {
+    icon: "https://cdn-icons-png.flaticon.com/512/2702/2702134.png?utm_source=chatgpt.com",
+  },
 };
 
 const CoursesPage = async () => {
@@ -35,7 +39,7 @@ const CoursesPage = async () => {
       {/* All Course Card */}
 
       <div className="p-7 bg-primary/5 rounded-xl mt-5 ">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 ">
+        <div className="grid gap-4 md:grid-cols-2   lg:grid-cols-3 ">
           {CourseData.map((course) => (
             <CourseCard key={course.id} course={course} />
           ))}

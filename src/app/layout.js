@@ -17,6 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata = {
   title: "Skill-Sphere",
   description: "Best of bangladesh",
+
+  icons: {
+    icon: "https://cdn-icons-png.flaticon.com/512/619/619153.png",
+  },
 };
 
 export default function RootLayout({ children }) {
