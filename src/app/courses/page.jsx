@@ -1,7 +1,7 @@
-import { Label, SearchField } from "@heroui/react";
-import React, { Suspense } from "react";
+import React from "react";
 import CourseCard from "../Components/Card/CourseCard";
 import { getCourseData } from "@/DataActions/CourseData";
+import Search from "../Components/Search/Search";
 
 export const metadata = {
   title: "All-Courses",
@@ -12,8 +12,21 @@ export const metadata = {
   },
 };
 
-const CoursesPage = async () => {
+const CoursesPage = async (props) => {
+  const searchParams = await props.searchParams;
+
+  const query = searchParams?.query?.toLowerCase() || "";
+
   const CourseData = await getCourseData();
+
+  const filteredCourses = query
+    ? CourseData.filter((course) => {
+        const matchesTitle = course.title.toLowerCase().includes(query);
+        const matchesCategory = course.category?.toLowerCase().includes(query);
+
+        return matchesTitle || matchesCategory;
+      })
+    : CourseData;
 
   return (
     <div className="container mx-auto my-12 ">
@@ -23,27 +36,30 @@ const CoursesPage = async () => {
           All Courses Page
         </h1>
         <div className="mt-6">
-          <SearchField name="search">
-            <SearchField.Group>
-              <SearchField.SearchIcon className="text-[#0485F7]" />
-              <SearchField.Input
-                className="w-52 "
-                placeholder="Search Courses..."
-              />
-              <SearchField.ClearButton />
-            </SearchField.Group>
-          </SearchField>
+          <React.Suspense
+            fallback={
+              <div className="w-52 h-10 bg-gray-200 animate-pulse rounded-md" />
+            }
+          >
+            <Search />
+          </React.Suspense>
         </div>
       </div>
 
       {/* All Course Card */}
 
       <div className="p-7 bg-primary/5 rounded-xl mt-5 ">
-        <div className="grid gap-4 md:grid-cols-2   lg:grid-cols-3 ">
-          {CourseData.map((course) => (
-            <CourseCard key={course.id} course={course} />
-          ))}
-        </div>
+        {filteredCourses.length > 0 ? (
+          <div className="grid gap-4 md:grid-cols-2   lg:grid-cols-3 ">
+            {filteredCourses.map((course) => (
+              <CourseCard key={course.id} course={course} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-10 text-xl font-medium text-gray-500">
+            No courses found
+          </div>
+        )}
       </div>
     </div>
   );
