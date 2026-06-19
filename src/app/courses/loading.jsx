@@ -3,7 +3,7 @@ import React from 'react';
 
 const loading = () => {
 
-    const skeletons = Array.from({ length: 6 });
+    const skeletons = Array.from({ length: 9 });
     return (
       <div>
         <div className="container mx-auto p-6 space-y-6">

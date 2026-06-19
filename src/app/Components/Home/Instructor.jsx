@@ -20,6 +20,7 @@ image} = instructor;
             alt={name}
             width={400}
             height={400}
+            priority
             className="w-full h-64 rounded- object-cover group-hover:scale-110 transition-transform duration-700"
           />
         </div>
@@ -44,7 +45,8 @@ image} = instructor;
             </h3>
 
             <p className="text-sm text-muted-foreground line-clamp-2">
-              Total Courses : <span className='text-primary font-black'>{total_courses}</span>
+              Total Courses :{" "}
+              <span className="text-primary font-black">{total_courses}</span>
             </p>
           </div>
         </CardContent>

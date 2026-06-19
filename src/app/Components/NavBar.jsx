@@ -74,13 +74,15 @@ const NavBar = () => {
         </ul>
         {/* Profile and theme  */}
         <div className="flex items-center gap-2">
-          <div>
+          <Link href="/myProfile">
             <Avatar size="sm">
               <Avatar.Fallback>
                 <UserRound />
               </Avatar.Fallback>
             </Avatar>
-          </div>
+          </Link>
+
+          <div></div>
           {/* <div>
             <Avatar size="sm">
               <Avatar.Image

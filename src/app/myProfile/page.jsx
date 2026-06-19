@@ -1,4 +1,5 @@
 import React from 'react';
+import Profile from '../Components/Profile';
 
 
 export const metadata = {
@@ -13,7 +14,7 @@ export const metadata = {
 const MyProfilePage = () => {
     return (
         <div>
-            THIS is my profile 
+            <Profile/>
         </div>
     );
 };

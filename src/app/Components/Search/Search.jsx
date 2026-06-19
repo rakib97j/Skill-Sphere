@@ -32,10 +32,13 @@ const Search = () => {
       defaultValue={searchParams.get("query")?.toString() || ""}
       onClear={handleClear}
     >
-      <SearchField.Group>
-        <SearchField.SearchIcon className="text-[#0485F7]" />
+      <SearchField.Group
+        className="dark:bg-primary/25   
+     "
+      >
+        <SearchField.SearchIcon className="text-[#6366F1] " />
         <SearchField.Input
-          className="w-52 "
+          className="w-52 text-[#6366F1] "
           placeholder="Search Courses..."
           onChange={(e) => handleSearch(e.target.value)}
         />

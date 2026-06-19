@@ -1,6 +1,8 @@
-import { ToggleButton } from "@heroui/react";
-import { Bookmark } from "lucide-react";
+ "use client"
+
+
 import Image from "next/image";
+import toast from "react-hot-toast";
 import {
   FaStar,
   FaClock,
@@ -8,6 +10,11 @@ import {
   FaUserTie,
   FaCheckCircle,
 } from "react-icons/fa";
+
+
+const handleNotify = () => {
+  toast.error(" 🥺 Enrollment Not Started yet ! ");
+};
 
 const CourseDetailsCard = ({ singleCourse }) => {
   const {
@@ -31,6 +38,7 @@ const CourseDetailsCard = ({ singleCourse }) => {
           height={2200}
           width={2200}
           className="object-cover"
+          priority
         />
 
         <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-black/30" />
@@ -68,11 +76,8 @@ const CourseDetailsCard = ({ singleCourse }) => {
         </div>
       </div>
 
-      
       <div className="grid lg:grid-cols-3 gap-8 mt-10">
-       
         <div className="lg:col-span-2 space-y-8">
-  
           <div className="bg-card border border-border rounded-3xl p-8">
             <h2 className="text-3xl font-bold mb-5">About This Course</h2>
 
@@ -198,10 +203,12 @@ const CourseDetailsCard = ({ singleCourse }) => {
               </div>
             </div>
 
-           
-              <button className="w-full mt-8 h-12 rounded-xl bg-primary text-white font-bold transition hover:opacity-90">
-                Enroll Now
-              </button>
+            <button
+              className="w-full mt-8 h-12 rounded-xl bg-primary text-white font-bold transition hover:opacity-90"
+              onClick={handleNotify}
+            >
+              Enroll Now
+            </button>
 
             <p className="text-center text-xs text-foreground/50 mt-4">
               Lifetime access • Certificate • Project Files

@@ -88,6 +88,7 @@ const Upcoming = () => {
                     // fill
                     width={2500}
                     height={2500}
+                    priority
                     className="object-cover rounded-2xl"
                   />
                 </div>
