@@ -74,7 +74,14 @@ const NavBar = () => {
         </ul>
         {/* Profile and theme  */}
         <div className="flex items-center gap-2">
-          <Link href="/myProfile">
+          <Link href="/login">
+            <Avatar size="sm">
+              <Avatar.Fallback>
+                <UserRound />
+              </Avatar.Fallback>
+            </Avatar>
+          </Link>
+          <Link href="/register">
             <Avatar size="sm">
               <Avatar.Fallback>
                 <UserRound />
