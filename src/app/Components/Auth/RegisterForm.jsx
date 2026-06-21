@@ -1,16 +1,52 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 import { Button, Card, InputGroup, Label, TextField } from "@heroui/react";
+
 import { Eye, EyeOff, ImageIcon, Lock, Mail, User } from "lucide-react";
 import Link from "next/link";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
+
+
+
+
 const RegisterForm = () => {
- 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const userData = Object.fromEntries(formData.entries());
+    console.log(userData);
+
+    // password name image email confirmPassword 
+
+    const { data, error } = await authClient.signUp.email({
+      name: userData.name,
+      image: userData.image,
+      email: userData.email,
+      password: userData.password,
+      confirmPassword: userData.confirmPassword,
+      callbackURL: "/",
+    });
+
+
+    console.log("sing up response " , {data ,error});
+
+    if(error){
+      toast.error("Failed to register  "  +  error.message )
+    }
+    if(data){
+      toast.success("Successful register operation")
+    }
+
+  }
 
   return (
     <div>
@@ -39,7 +75,7 @@ const RegisterForm = () => {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={onSubmit}>
           {/* Name */}
           <TextField isRequired>
             <Label className="text-foreground font-medium mb-2">

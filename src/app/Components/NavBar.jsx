@@ -3,11 +3,26 @@ import { useState } from "react";
 import { Avatar, Link } from "@heroui/react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "./ThemeToggle";
-import { PersonStanding, UserRound } from "lucide-react";
+import {  LogOut } from "lucide-react";
+import { signOut, useSession } from "@/lib/auth-client";
 
 const NavBar = () => {
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
+
+  const { data ,isPending} = useSession()
+
+  if(isPending){
+    return (
+      <div>
+        <not-found></not-found>
+      </div>
+    );
+  }
+
+  const user =data?.user;
+
 
   return (
     <nav className="sticky top-0 z-40 w-full border-b-2 bg-background border-border  backdrop-blur-xl  ">
@@ -74,31 +89,31 @@ const NavBar = () => {
         </ul>
         {/* Profile and theme  */}
         <div className="flex items-center gap-2">
-          <Link href="/login">
-            <Avatar size="sm">
-              <Avatar.Fallback>
-                <UserRound />
-              </Avatar.Fallback>
-            </Avatar>
-          </Link>
-          <Link href="/register">
-            <Avatar size="sm">
-              <Avatar.Fallback>
-                <UserRound />
-              </Avatar.Fallback>
-            </Avatar>
-          </Link>
+          <div className="">
+            {user ? (
+              <div className="flex">
+                {" "}
+                <div>
+                  <h1>welcome {user.name}</h1>
+                  <h1>{user.email}</h1>
+                </div>
+                <Link href="/myProfile">
+                  <Avatar>
+                    <Avatar.Image src={user.image || ""} alt={user.name} />
+                    <Avatar.Fallback>JD</Avatar.Fallback>
+                  </Avatar>
+                </Link>
+                <button variant="danger" onClick={() => signOut()} >
+                  <LogOut />
+                </button>
+              </div>
+            ) : (
+              <>
+                <Link href="/login">Login</Link>
+              </>
+            )}
+          </div>
 
-          <div></div>
-          {/* <div>
-            <Avatar size="sm">
-              <Avatar.Image
-                alt="Blue"
-                src="https://heroui-assets.nyc3.cdn.digitaloceanspaces.com/avatars/blue.jpg"
-              />
-              <Avatar.Fallback>B</Avatar.Fallback>
-            </Avatar>
-          </div> */}
           <ThemeToggle />
         </div>
       </header>

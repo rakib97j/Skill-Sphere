@@ -1,9 +1,74 @@
 "use client";
 
-import { Avatar, Chip, Button } from "@heroui/react";
+import { useSession } from "@/lib/auth-client";
+import { Avatar, Chip, Button, Skeleton } from "@heroui/react";
 import { BookOpen, Trophy, Star, Mail, MapPin } from "lucide-react";
 
+
 export default function Profile() {
+
+
+   const { data ,isPending} = useSession()
+  
+    if(isPending){
+      return  <div className="max-w-6xl mx-auto px-4 py-10 animate-pulse">
+            {/* Profile Hero */}
+            <div className="rounded-3xl border border-white/10 bg-[#0B1120] p-8">
+              <div className="flex items-center gap-6">
+                <Skeleton className="w-20 h-20 rounded-2xl" />
+      
+                <div className="flex-1 space-y-3">
+                  <Skeleton className="h-8 w-52 rounded-lg" />
+                  <Skeleton className="h-4 w-40 rounded-lg" />
+      
+                  <div className="flex gap-2">
+                    <Skeleton className="h-6 w-16 rounded-full" />
+                    <Skeleton className="h-6 w-28 rounded-full" />
+                  </div>
+      
+                  <Skeleton className="h-4 w-72 rounded-lg" />
+                </div>
+      
+                <Skeleton className="h-10 w-24 rounded-xl" />
+              </div>
+            </div>
+      
+            {/* Stats */}
+            <div className="grid md:grid-cols-3 gap-5 mt-8">
+              {[1, 2, 3].map((item) => (
+                <div
+                  key={item}
+                  className="bg-[#111827] border border-white/10 rounded-2xl p-6"
+                >
+                  <Skeleton className="h-5 w-5 rounded mb-4" />
+                  <Skeleton className="h-8 w-12 rounded mb-2" />
+                  <Skeleton className="h-4 w-28 rounded" />
+                </div>
+              ))}
+            </div>
+      
+            {/* About */}
+            <div className="mt-8 bg-[#111827] border border-white/10 rounded-3xl p-8">
+              <Skeleton className="h-7 w-32 rounded mb-6" />
+              <Skeleton className="h-4 w-full rounded mb-3" />
+              <Skeleton className="h-4 w-11/12 rounded mb-3" />
+              <Skeleton className="h-4 w-10/12 rounded" />
+            </div>
+      
+            {/* Recent Courses */}
+            <div className="mt-8 bg-[#111827] border border-white/10 rounded-3xl p-8">
+              <Skeleton className="h-7 w-40 rounded mb-6" />
+      
+              <div className="space-y-4">
+                {[1, 2, 3].map((item) => (
+                  <Skeleton key={item} className="h-16 w-full rounded-xl" />
+                ))}
+              </div>
+            </div>
+          </div>
+    }
+  
+    const user =data?.user;
   return (
     <section className="container mx-auto px-4 py-10">
       {/* Profile Hero */}
@@ -11,13 +76,13 @@ export default function Profile() {
         <div className="absolute top-0 right-0 h-56 w-56 rounded-full bg-primary/10 blur-3xl" />
 
         <div className="relative flex flex-col md:flex-row items-center gap-6">
-          <Avatar
-            src="https://i.pravatar.cc/300"
-            className="w-32 h-32 text-large ring-4 ring-primary/20"
-          />
+          <Avatar className="h-[200px] w-[200px]" >
+            <Avatar.Image src={user.image || ""} alt={user.name} />
+            <Avatar.Fallback>{user.name} s Picture </Avatar.Fallback>
+          </Avatar>
 
           <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl font-bold text-foreground">Rakib Hassan</h1>
+            <h1 className="text-4xl font-bold text-foreground">{user.name}</h1>
 
             <p className="text-default-500 mt-2">
               Frontend Developer & Lifelong Learner
@@ -36,7 +101,7 @@ export default function Profile() {
             <div className="flex flex-wrap gap-4 mt-5 text-default-500">
               <div className="flex items-center gap-2">
                 <Mail size={16} />
-                rakib@example.com
+                {user.email}
               </div>
 
               <div className="flex items-center gap-2">
@@ -46,9 +111,9 @@ export default function Profile() {
             </div>
           </div>
 
-          <Button color="primary" className="bg-primary/70">Edit Profile</Button>
-
-          
+          <Button color="primary" className="bg-primary/70">
+            Edit Profile
+          </Button>
         </div>
       </div>
 

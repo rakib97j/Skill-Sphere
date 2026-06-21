@@ -1,8 +1,7 @@
 import React from 'react';
 import Profile from '../Components/Profile';
-import { auth } from "@/lib/auth-server";
-import { headers } from "next/headers";
-import { redirect } from "next/navigation";
+
+
 
 export const metadata = {
   title: "My profile",
@@ -13,15 +12,10 @@ export const metadata = {
 };
 
 const MyProfilePage = async () => {
-    const session = await auth.api.getSession({ headers: await headers() });
-    
-    if (!session) {
-        redirect("/login");
-    }
-
+   
     return (
         <div>
-            <Profile session={session}/>
+            <Profile />
         </div>
     );
 };

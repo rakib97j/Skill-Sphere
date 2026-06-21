@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth-client";
 // import { Check } from "@gravity-ui/icons";
 import { Button, Card, InputGroup, Label, TextField } from "@heroui/react";
 import { Eye, EyeOff, Lock, Mail } from "lucide-react";
@@ -9,15 +10,39 @@ import toast from "react-hot-toast";
 
 import { FcGoogle } from "react-icons/fc";
 
-export function LoginForm() {
+const  LoginForm =  () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+
+   const onSubmit = async (e) =>{
+     e.preventDefault();
+     const formData = new FormData(e.currentTarget);
+     const userData = Object.fromEntries(formData.entries());
+     console.log(  "form submit withe ", userData);
 
 
 
-   const [showPassword, setShowPassword] = useState(false);
+     const { data, error } = await authClient.signIn.email({
+      email: userData.email , 
+      password: userData.password ,
+      rememberMe: true ,
+      callbackURL:"/", 
+     })
+     console.log("sing in response" , {data , error});
+
+       if (error) {
+         toast.error("Failed to Login  " + error.message);
+       }
+       if (data) {
+         toast.success("login success Welcome back" );
+       }
+
+   }
+
   return (
     <Card
       className="
- my-7
+        my-7
         md:w-lg
 				p-8
 				shadow-2xl
@@ -38,7 +63,7 @@ export function LoginForm() {
       </div>
 
       {/* Form */}
-      <form className="space-y-5">
+      <form className="space-y-5" onSubmit={onSubmit}>
         {/* Email */}
         <TextField isRequired>
           <Label className="text-foreground font-medium mb-2">Email</Label>
@@ -117,7 +142,7 @@ export function LoginForm() {
 						h-12
 					"
         >
-          Create Account
+          Log in
         </Button>
 
         {/* Divider */}
@@ -137,11 +162,7 @@ export function LoginForm() {
 						border border-border
 						rounded-2xl
 					"
-          onPress={() =>
-            toast.error("Google signup coming soon! 🚀", {
-              
-            })
-          }
+          onPress={() => toast.error("Google signup coming soon! 🚀", {})}
         >
           <FcGoogle size={20} />
           <span>Continue with Google</span>
