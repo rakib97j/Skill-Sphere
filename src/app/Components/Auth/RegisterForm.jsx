@@ -7,7 +7,8 @@ import { Eye, EyeOff, ImageIcon, Lock, Mail, User } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import React, { useState } from "react";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
+
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -55,9 +56,10 @@ const data = await authClient.signIn.social({
 
     if(error){
       toast.error("Failed to register  "  +  error.message )
+      redirect("/register")
     }
     if(data){
-      toast.success("Successful register operation")
+      toast.success("Successful register operation"),
       redirect('/login')
     }
 
@@ -271,6 +273,7 @@ const data = await authClient.signIn.social({
             text-primary-foreground
             font-bold
             rounded-2xl
+            hover:opacity-80
             
           "
           >
@@ -294,8 +297,9 @@ const data = await authClient.signIn.social({
 						text-foreground
 						border border-border
 						rounded-2xl
+            hover:opacity-75
 					"
-            // onPress={() => toast.error("Google signup coming soon! ")}
+           
           >
             <FcGoogle size={20} />
             <span>Continue with Google</span>

@@ -46,7 +46,9 @@ const data = await authClient.signIn.social({
      console.log("sing in response" , {data , error});
 
        if (error) {
-         toast.error("Failed to Login  " + error.message);
+         toast.error("Failed to Login  " + error.message, {
+           position: "top-center",
+         });
        }
        if (data) {
          toast.success("login success Welcome back" );
@@ -154,6 +156,7 @@ const data = await authClient.signIn.social({
 						text-primary-foreground
 						font-bold
 						rounded-2xl
+            hover:opacity-80
 					"
         >
           Log in
@@ -176,6 +179,7 @@ const data = await authClient.signIn.social({
 						text-foreground
 						border border-border
 						rounded-2xl
+            hover:opacity-75
 					"
           
         >

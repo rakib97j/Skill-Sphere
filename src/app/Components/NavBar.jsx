@@ -25,7 +25,7 @@ const NavBar = () => {
 
 
   return (
-    <nav className="sticky top-0 z-40 w-full border-b-2 bg-background border-border  backdrop-blur-xl  ">
+    <nav className="sticky top-0 z-40 w-full border-b-2 bg-background/5 border-border  backdrop-blur-xl  ">
       <header className="flex h-16 items-center justify-between px-8">
         <div className="flex items-center gap-3">
           <button
@@ -107,11 +107,11 @@ const NavBar = () => {
                 <Link href="/myProfile" className="  ml-4">
                   <Avatar className="mt-1">
                     <Avatar.Image src={user.image || ""} alt={user.name} />
-                    <Avatar.Fallback>JD</Avatar.Fallback>
+                    <Avatar.Fallback>{user.name}</Avatar.Fallback>
                   </Avatar>
                 </Link>
                 <button
-                  className="ml-5 hidden md:block   "
+                  className="ml-5 hidden md:block  hover:text-primary cursor-pointer  "
                   variant="danger"
                   onClick={() => signOut()}
                 >
@@ -122,8 +122,14 @@ const NavBar = () => {
               <>
                 <Link href="/login">
                   <Button
-                    color="primary"
-                    className="bg-primary/70 hover:opacity-85"
+                    // color="primary"
+                    variant="secondary"
+                    className="
+						bg-secondary
+						text-foreground
+						border border-border
+						rounded-full
+            hover:opacity-75"
                   >
                     <LogIn />
                   </Button>
