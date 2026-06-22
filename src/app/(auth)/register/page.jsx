@@ -1,5 +1,16 @@
 import RegisterForm from '@/app/Components/Auth/RegisterForm';
-import React from 'react';
+
+
+
+export const metadata = {
+  title: "Register",
+  description: "Log in to Skill-sphere and get full access",
+
+  icons: {
+    icon: "https://cdn-icons-png.flaticon.com/512/747/747376.png",
+  },
+};
+
 
 const RegisterPage = () => {
     return (

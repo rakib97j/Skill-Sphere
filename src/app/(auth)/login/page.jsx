@@ -1,5 +1,14 @@
 import LoginForm from '@/app/Components/Auth/LoginForm';
-import React from 'react';
+
+
+export const metadata = {
+  title: "Log in",
+  description: "SingUp to Skill-sphere and get full access",
+
+  icons: {
+    icon: "https://cdn-icons-png.flaticon.com/512/747/747376.png",
+  },
+};
 
 const LogInPage = () => {
     return (
