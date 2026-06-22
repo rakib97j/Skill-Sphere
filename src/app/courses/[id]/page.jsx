@@ -1,5 +1,9 @@
 import CourseDetailsCard from "@/app/Components/Card/CourseDetailsCard";
 import { getCourseData } from "@/DataActions/CourseData";
+import { auth } from "@/lib/auth";
+
+import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 export const metadata = {
   title: "Details Page",
@@ -10,6 +14,26 @@ export const metadata = {
 };
 
 const CoursesDetailsPage = async ({ params }) => {
+
+
+// privet route info
+
+  const session = await auth.api.getSession({
+      headers : await headers()
+    })
+
+    const user =session?.user;
+    if(!user){
+      redirect('/login');
+    }
+
+
+
+  
+
+
+    // for dynamic page
+
   const { id } = await params;
 
   const CourseData = await getCourseData();
@@ -20,10 +44,7 @@ const singleCourse = CourseData.find((course) => String(course.id) === id);
 
 
  
-//   console.log("id:", id);
-//   console.log("CourseData:", CourseData);
-// console.log(CourseData[0]);
-
+//
 
 
   if (!singleCourse) {

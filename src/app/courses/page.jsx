@@ -33,7 +33,7 @@ const CoursesPage = async (props) => {
       {/* Title and search  */}
       <div className="md:flex  justify-between items-center ">
         <h1 className="text-4xl flex justify-center font-black underline underline-offset-8 decoration-2">
-          All Courses Page
+          Explore Courses
         </h1>
         <div className="mt-6">
           <React.Suspense

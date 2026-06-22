@@ -5,8 +5,9 @@ import { Button, Card, InputGroup, Label, TextField } from "@heroui/react";
 
 import { Eye, EyeOff, ImageIcon, Lock, Mail, User } from "lucide-react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import React, { useState } from "react";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -14,6 +15,18 @@ import { FcGoogle } from "react-icons/fc";
 
 
 const RegisterForm = () => {
+
+
+
+  const  handelGoogleSingIn = async () => {
+const data = await authClient.signIn.social({
+    provider: "google",
+  });
+  console.log(data , "data");
+  };
+
+
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -33,7 +46,8 @@ const RegisterForm = () => {
       email: userData.email,
       password: userData.password,
       confirmPassword: userData.confirmPassword,
-      callbackURL: "/",
+      callbackURL: '/login',
+      
     });
 
 
@@ -44,6 +58,7 @@ const RegisterForm = () => {
     }
     if(data){
       toast.success("Successful register operation")
+      redirect('/login')
     }
 
   }
@@ -98,6 +113,7 @@ const RegisterForm = () => {
               </InputGroup.Prefix>
 
               <InputGroup.Input
+                maxLength={13}
                 name="name"
                 type="text"
                 placeholder="Enter Your Name"
@@ -186,7 +202,7 @@ const RegisterForm = () => {
               <InputGroup.Input
                 name="password"
                 type={showPassword ? "text" : "password"}
-                placeholder="••••••••"
+                placeholder="Enter your Password"
                 className="bg-transparent text-foreground placeholder:text-muted-foreground"
               />
 
@@ -226,7 +242,7 @@ const RegisterForm = () => {
               <InputGroup.Input
                 name="confirmPassword"
                 type={showConfirmPassword ? "text" : "password"}
-                placeholder="••••••••"
+                placeholder="Confirm your Password"
                 className="bg-transparent text-foreground placeholder:text-muted-foreground"
               />
 
@@ -255,7 +271,7 @@ const RegisterForm = () => {
             text-primary-foreground
             font-bold
             rounded-2xl
-            h-12
+            
           "
           >
             Create Account
@@ -270,6 +286,7 @@ const RegisterForm = () => {
 
           {/* Google */}
           <Button
+            onClick={handelGoogleSingIn}
             variant="secondary"
             className="
 						w-full
@@ -278,7 +295,7 @@ const RegisterForm = () => {
 						border border-border
 						rounded-2xl
 					"
-            onPress={() => toast.error("Google signup coming soon! ")}
+            // onPress={() => toast.error("Google signup coming soon! ")}
           >
             <FcGoogle size={20} />
             <span>Continue with Google</span>

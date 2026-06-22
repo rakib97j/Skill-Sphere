@@ -1,4 +1,4 @@
-import {  Button, Card, CardContent, CardFooter } from "@heroui/react";
+import { Button, Card, CardContent, CardFooter } from "@heroui/react";
 import { Star } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";

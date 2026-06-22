@@ -11,6 +11,21 @@ import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 
 const  LoginForm =  () => {
+
+
+  const  handelGoogleSingIn = async () => {
+const data = await authClient.signIn.social({
+    provider: "google",
+  });
+  console.log(data , "data");
+  };
+
+
+
+
+
+
+
   const [showPassword, setShowPassword] = useState(false);
 
 
@@ -114,7 +129,7 @@ const  LoginForm =  () => {
             <InputGroup.Input
               name="password"
               type={showPassword ? "text" : "password"}
-              placeholder="••••••••"
+              placeholder="Enter your Password"
               className="bg-transparent text-foreground placeholder:text-muted-foreground"
             />
 
@@ -139,7 +154,6 @@ const  LoginForm =  () => {
 						text-primary-foreground
 						font-bold
 						rounded-2xl
-						h-12
 					"
         >
           Log in
@@ -154,6 +168,7 @@ const  LoginForm =  () => {
 
         {/* Google */}
         <Button
+          onClick={handelGoogleSingIn}
           variant="secondary"
           className="
 						w-full
@@ -162,7 +177,7 @@ const  LoginForm =  () => {
 						border border-border
 						rounded-2xl
 					"
-          onPress={() => toast.error("Google signup coming soon! 🚀", {})}
+          
         >
           <FcGoogle size={20} />
           <span>Continue with Google</span>
